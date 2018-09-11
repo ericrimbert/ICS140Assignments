@@ -8,6 +8,7 @@ class CircleMath(object):
         self.radius = input("Please enter the radius of the Circle: ")
 
     # gets the circumference of the circle given radius
+    # no rounding is added here
     def equate_circumference(self):
         try:
             radius = float(self.radius)
@@ -19,6 +20,7 @@ class CircleMath(object):
             print('Error, incorrect value')
 
     # gets the area of the circle given radius
+    # no rounding is added here
     def equate_area(self):
         try:
             radius = float(self.radius)
@@ -30,6 +32,7 @@ class CircleMath(object):
             print('Error, incorrect value')
 
 
+# yes I know I am calling a class, but it makes sense for now as I hope to expand this out
 circle_math = CircleMath()
 circle_math.equate_circumference()
 circle_math.equate_area()
