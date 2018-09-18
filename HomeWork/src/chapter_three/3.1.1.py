@@ -1,5 +1,6 @@
 # 3.1.1: Reading multiple data types.
 
+# variables
 person_name = input("Please enter in the name: ")
 person_age = int(input("Please enter in the age: "))
 
