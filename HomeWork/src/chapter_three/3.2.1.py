@@ -1,7 +1,7 @@
 # 3.2.1: Initialize a list.
 
 # list with names
-short_names = ('Gus', 'Bob', 'Zoe')
+short_names = ['Gus', 'Bob', 'Zoe']
 
 # prints the names in the list
 print(short_names[0])
