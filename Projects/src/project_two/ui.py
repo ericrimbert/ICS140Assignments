@@ -1,31 +1,42 @@
 from Projects.src.project_two.calculator import Calculator
 calc = Calculator()
 
-
+# class for "user interface"
 class UserInterface(object):
     def __init__(self):
         self.operations = ['+', '-', '/', '*', 'x', '%']
 
+    # gets user input
     def get_input(self):
         try:
             return input("Input: ")
         except KeyboardInterrupt:
             return "Error!", False
 
+    # parses the user input
     def operations_parser(self, user_input):
-        user_input = user_input.replace(' ', '')
-        user_numbers = []
-        user_operations = []
+        try:
+            # replaces user input spaces with no space, sets variables
+            user_input = user_input.replace(' ', '')
+            user_numbers = []
+            user_operations = []
 
-        for char in user_input:
-            if char in self.operations:
-                user_operations.append(char)
-                num_one, num_two = user_input.split(char)
-                user_numbers.append(num_one)
-                user_numbers.append(num_two)
+            # loops each character in user input for operator
+            # if one is found, it adds it to the operator list and then uses that to split
+            # user input and set them to variables
+            for char in user_input:
+                if char in self.operations:
+                    user_operations.append(char)
+                    num_one, num_two = user_input.split(char)
+                    user_numbers.append(num_one)
+                    user_numbers.append(num_two)
 
-        return user_numbers, user_operations
+            return user_numbers, user_operations
 
+        except ValueError:
+            return "Error! Too many values.", True
+
+    # loops to see which operator is used, runs the calculator class for the answer
     def operation_decision(self, operation, user_numbers):
         try:
             operation = operation[0]
@@ -61,3 +72,6 @@ class UserInterface(object):
 
         except ZeroDivisionError:
             return "Error! Cannot divide by Zero.", True
+
+        except TypeError:
+            return "Error! Too many values.", True

@@ -1,6 +1,6 @@
-# add stuff
 
 
+# Class for calculator, self explanatory
 class Calculator(object):
     def __init__(self):
         pass
