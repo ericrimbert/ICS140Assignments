@@ -2,6 +2,8 @@ from Projects.src.project_two.ui import UserInterface
 ui = UserInterface()
 
 
+# runs code and adds a little message at the top
+# include while loop to loop until the user is done
 def main():
     answer = True
     print("\t\t----------Simple Calculator----------")
