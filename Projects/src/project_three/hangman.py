@@ -2,21 +2,23 @@ import random
 
 
 class Hangman(object):
+    # constructs initial variables upon the call of the class
     def __init__(self):
         self.attempts = 10
-        self.word_length = None
         self.letter_counter = 0
-        self.word = None
+        self.word_details = self.get_word()
+        self.word = self.word_details[0]
+        self.word_length = self.word_details[1]
+        self.alphabet = self.initialize_alphabet()
         self.output_dict = {}
 
     # gets a word from a dictionary at random
-    def get_word(self):
+    @staticmethod
+    def get_word():
         words = ['yellow', 'bird', 'house']
         word = words[random.randint(0, len(words) - 1)]
-
-        self.word = word
-        self.word_length = len(word)
-        return word
+        word_length = len(word)
+        return word, word_length
 
     # sets the dictionary in the constructor to contain values of the word
     def generate_word_output(self, word):
@@ -50,4 +52,25 @@ class Hangman(object):
 
         return output_string.strip()
 
+    # initializes a dictionary of the alphabet, false is not guessed
+    @staticmethod
+    def initialize_alphabet():
+        alphabet = {}
+        num = 97
 
+        while num <= 122:
+            alphabet[chr(num)] = False
+            num += 1
+
+        return alphabet
+
+    # checks if the letter is a letter and if it has been guessed already
+    def validate_letter(self, letter):
+        if letter in self.alphabet:
+            if self.alphabet[letter]:
+                return False
+            # if letter wasn't guessed already, sets it to be guessed
+            self.alphabet[letter] = True
+            return True
+
+        return False
