@@ -15,7 +15,7 @@ class Hangman(object):
     # gets a word from a dictionary at random
     @staticmethod
     def get_word():
-        words = ['yellow', 'bird', 'house']
+        words = ['yellow', 'bird', 'house', 'mouse', 'doctor', 'dog', 'keystone', 'is', 'bad', 'television', 'bag']
         word = words[random.randint(0, len(words) - 1)]
         word_length = len(word)
         return word, word_length
