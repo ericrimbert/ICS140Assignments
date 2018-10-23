@@ -52,16 +52,20 @@ class Hangman(object):
 
         return output_string.strip()
 
-    # initializes a dictionary of the alphabet, false is not guessed
+    # initializes a dictionary of the alphabet
     @staticmethod
     def initialize_alphabet():
+        # initializes a dictionary and sets num to 97, 97 is lowercase a
         alphabet = {}
         num = 97
 
+        # while that number is less-than or equal to 122(lowercase z)
         while num <= 122:
+            # set ascii char to false in dict, iterate 1
             alphabet[chr(num)] = False
             num += 1
 
+        # return dictionary
         return alphabet
 
     # checks if the letter is a letter and if it has been guessed already
@@ -74,3 +78,8 @@ class Hangman(object):
             return True
 
         return False
+
+    # ui health for the user to see
+    def user_health(self):
+        health = 10 * self.attempts
+        return f"HEALTH: {health}%"
