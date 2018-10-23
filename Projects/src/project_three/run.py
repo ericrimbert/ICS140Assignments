@@ -1,5 +1,4 @@
 from Projects.src.project_three.hangman import Hangman
-import os
 hangman = Hangman()
 
 
@@ -15,7 +14,7 @@ def main():
         # if attempts are 0, end and print a loss
         print(hangman.user_health())  # health
         if hangman.attempts == 0:
-            print("You have no more attempts left! You Lose!")
+            print(f"You have no more attempts left! You Lose!\nYour word was {hangman.word}")
             break
 
         # sets guessed letter and validates it
