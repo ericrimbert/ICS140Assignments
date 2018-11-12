@@ -7,9 +7,11 @@
 
 
 class StudentStatistics(object):
+    # initializes dictionary for use
     def __init__(self):
         self.dictionary = self.initialize_dictionary()
 
+    #static method that the init uses
     @staticmethod
     def initialize_dictionary():
         student_grades = {
@@ -34,6 +36,7 @@ class StudentStatistics(object):
 
         return student_percentages
 
+    # returns a dictionary of average test scores
     def avg_test_grade(self):
         average_test = {}
         index = 0
@@ -47,6 +50,7 @@ class StudentStatistics(object):
         return average_test
 
 
+# main function that prints items from class
 def main():
     SchoolGrades = StudentStatistics()
 
@@ -61,4 +65,5 @@ def main():
         print(f'Test {test} - {average}%')
 
 
+# runs main
 main()
