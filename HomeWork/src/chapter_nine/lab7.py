@@ -1,5 +1,5 @@
 # lab 7
-from math import sqrt
+from math import sqrt, pi
 
 
 class MathFunctions(object):
@@ -42,9 +42,22 @@ class MathFunctions(object):
         except:
             print("No roots!")
 
-    def area(self):
-        pass
+    def area(self, r):
+        area = pi * (r * r)
+
+        if area <= 0:
+            raise ValueError('Cannot compute area!', False)
+
+        return area
 
 
 maf = MathFunctions()
-maf.quadratic_formula()
+# maf.quadratic_formula()
+
+radius = float(input("Please enter in the radius: "))
+try:
+    print(maf.area(radius))
+
+except ValueError:
+    print("Error, incorrect value entered. Please enter in a new number.")
+    maf.area(radius)
