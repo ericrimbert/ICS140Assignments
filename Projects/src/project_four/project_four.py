@@ -1,27 +1,4 @@
-# Main Program:
-#
-#
-# Create a list of 10 or more random numbers between 0 and 100.
-#
-# Call the function stats with this list as its argument.
-#
-# Print out the numbers in the list
-#
-# Print the results of calling stats as:
-#
-# Minimum = XX, Maximum = YY, Average = ZZ.
-#
-#
-# Ask the user to enter a string to be reversed.
-#
-# Call the function reverse with this string as its argument.
-#
-# Print out the reversed string.
-#
-#
-# Ask the user to enter the size of the triangle to print.
-#
-# Call the function triangle with this number as its argument.
+import random
 
 
 class ProjectFour(object):
@@ -45,7 +22,7 @@ class ProjectFour(object):
             max_num = max(num_list)
             min_num = min(num_list)
             avg_num = total / len(num_list)
-            num_values = (max_num, min_num, avg_num)
+            num_values = (min_num, max_num, avg_num)
 
             return num_values
 
@@ -75,7 +52,7 @@ class ProjectFour(object):
     # Function 3: triangle(). This function takes an integer as its argument.
     # The function prints out a right triangle with the base and height as the input argument.
     # For example, if the base is 5, the triangle would be printed as:
-    def triangle(self, base, triangle=1):
+    def triangle(self, base, triangle):
         try:
             # disallows a base of 2
             if base <= 2:
@@ -104,17 +81,23 @@ class ProjectFour(object):
 
                     return True
 
-                if triangle == 2:
-                    # do an isosc
+                else:
+                    # do an isosc triangle
                     base_str = "*"*((base*2)-1)
+                    # sets triangle settings that all sizes will have
                     index = 1
                     start = " "*(base-1)+"*"
                     print(start)
+                    # while loop with incrementing index
                     while index <= base-2:
+                        # line that gets printed, separated for readability
                         line1 = " "*(base-index-1) + "*"
-                        line2 = " "*index+"*"
+                        line2 = " "*(index*2-1)+"*"
+                        # prints then increments index
                         print(line1 + line2)
                         index += 1
+
+                    # prints the base
                     print(base_str)
 
         except TypeError:
@@ -130,4 +113,69 @@ class ProjectFour(object):
 
 project = ProjectFour()
 
-print(project.triangle(4, 2))
+# Main Program:
+#
+#
+# Create a list of 10 or more random numbers between 0 and 100.
+#
+# Call the function stats with this list as its argument.
+#
+# Print out the numbers in the list
+#
+# Print the results of calling stats as:
+#
+# Minimum = XX, Maximum = YY, Average = ZZ.
+#
+#
+# Ask the user to enter a string to be reversed.
+#
+# Call the function reverse with this string as its argument.
+#
+# Print out the reversed string.
+#
+#
+# Ask the user to enter the size of the triangle to print.
+#
+# Call the function triangle with this number as its argument.
+
+
+def main():
+    # part one
+    # creates a list
+    print("")
+    random_nums = list()
+    index = 1
+    # fills list depending on a random size with random numbers
+    while index < random.randint(10, 100):
+        random_nums.append(random.randint(0, 100))
+        index += 1
+    # checks if stats returned and prints the numbers, then the min, max, and avg
+    stats = project.stats(random_nums)
+    if stats:
+        string = "Numbers in list:"
+        for num in random_nums:
+            string += " " + str(num)
+        print(string)
+        print(f"Minimum = {stats[0]}, Maximum = {stats[1]}, Average = {stats[2]}\n")
+
+    # gets a string to be reversed
+    string = input("Enter in a string to be reversed: ")
+    reversed_string = project.reverse(string)
+    # prints reversed string
+    if reversed_string:
+        print(reversed_string + "\n")
+
+    # Gets a triangle size and type, then prints it
+    try:
+        tri_size = int(input("Please enter in the size you want your triangle to be: "))
+        tri_type = int(input("What type of triangle do you want?\nEnter in '1' for a right triangle and '2' for an icosceles: "))
+        if tri_type != 1:
+            tri_type = 2
+
+        project.triangle(tri_size, tri_type)
+
+    except ValueError:
+        print("Invalid number entered!")
+
+
+main()
