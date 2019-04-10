@@ -28,12 +28,14 @@ while keep_going != 'n':
     keep_going = input()
 # 5.3.2: While loop: Insect growth.
 #
-num_insects = 8  # Must be >= 1
-num_string = str(num_insects)
-while 1 <= num_insects <= 100:
-    num_insects *= 2
-    if num_insects <= 100:
-        num_string += f" {num_insects}"
+        num_insects = 8 # Must be >= 1
+print(num_insects, end=' ')
+while num_insects < 100:
+        num_insects = num_insects * 2
+        if num_insects <= 100:
+            print(num_insects, end=' ')
+        else:
+            break
 
 print(num_string)
 # 5.4.1: While loop: Print 1 to N.
