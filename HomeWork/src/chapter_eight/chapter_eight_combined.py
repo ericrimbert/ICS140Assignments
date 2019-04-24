@@ -87,4 +87,5 @@ country_pop = {
 }
 # country populations as of 2014
 for country, population in country_pop.items():
-    print(f"{country} has {population} people.")
+    print(country, 'has', pop, 'people.')
+
